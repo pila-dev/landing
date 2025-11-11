@@ -1,0 +1,73 @@
+---
+interface Props {
+  year: number;
+}
+
+const { year } = Astro.props as Props;
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <p class="site-footer__brand">Pila</p>
+      <p class="site-footer__copy">Queremos que la relación con tu dinero sea tan simple como abrir una app.</p>
+    </div>
+    <div class="site-footer__links">
+      <a href="#features">Beneficios</a>
+      <a href="#steps">Cómo funciona</a>
+      <a href="mailto:hola@pila.app">Contáctanos</a>
+    </div>
+    <p class="site-footer__meta">© {year} Pila. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #0b0b12;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 2.5rem clamp(2rem, 6vw, 8rem);
+    margin-top: 2rem;
+  }
+
+  .site-footer__inner {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-items: start;
+  }
+
+  .site-footer__brand {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem;
+    color: #fff;
+  }
+
+  .site-footer__copy {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .site-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .site-footer__links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .site-footer__links a:hover {
+    color: #fff;
+  }
+
+  .site-footer__meta {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+</style>

@@ -1,11 +1,24 @@
+---
+const {
+	title = 'Pila | Finanzas personales simples',
+	description = 'Pila presenta la forma más clara de ordenar tus finanzas personales.',
+} = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
 		<slot />
@@ -13,10 +26,28 @@
 </html>
 
 <style>
+	:root {
+		font-family: 'Space Grotesk', Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+			sans-serif;
+		color: #0f0f15;
+		background-color: #f6f5ff;
+		--brand: #6e57e8;
+		--brand-dark: #4a33c7;
+		--text: #0f0f15;
+		--muted: #565570;
+		--surface: #ffffff;
+		--surface-alt: #f2efff;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
 	html,
 	body {
-		margin: 0;
 		width: 100%;
-		height: 100%;
+		margin: 0;
+		background-color: #f6f5ff;
+		color: inherit;
 	}
 </style>

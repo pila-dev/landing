@@ -1,11 +1,136 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import TopBar from "../components/TopBar.astro";
+import Hero from "../components/Hero.astro";
+import StatsSection from "../components/StatsSection.astro";
+import FeaturesSection from "../components/FeaturesSection.astro";
+import StepsSection from "../components/StepsSection.astro";
+import FooterSection from "../components/FooterSection.astro";
+import ctaApple from "../assets/cta_apple.webp";
+import ctaAndroid from "../assets/cta_android.webp";
+import capture from "../assets/capture.png";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const features = [
+  {
+    icon: "💸",
+    title: "Registro de movimientos",
+    copy: "Cargá cada cobro e ingreso y conoce tu dinero disponible al instante.",
+  },
+  {
+    icon: "🧾",
+    title: "Gastos ordenados",
+    copy: "Asigna categorías personalizadas y detecta en segundos qué categorías dominan el gasto.",
+  },
+  {
+    icon: "📊",
+    title: "Balance al día",
+    copy: "Consulta resúmenes mensuales y anuales para ver la diferencia entre lo que entra y sale.",
+  },
+];
+
+const steps = [
+  {
+    title: "Carga tus ingresos",
+    copy: "Ingresa sueldos, freelance y cualquier entrada para ver cuánto dinero disponible tienes.",
+  },
+  {
+    title: "Registra y clasifica gastos",
+    copy: "Anota cada gasto, asígnalo a una categoría y detecta rápidamente dónde se va tu plata.",
+  },
+  {
+    title: "Controla tu balance",
+    copy: "Consulta resúmenes semanales y mensuales para ajustar hábitos y tomar decisiones claras.",
+  },
+];
+
+const stats = [
+  { label: "Movimientos registrados", value: "9K+" },
+  { label: "Tiempo promedio para cargar un movimiento", value: "1 min" },
+  { label: "Usuarios activos mensuales", value: "3K+" },
+];
+
+const heroContent = {
+  eyebrow: "Cuidá tu plata sin drama",
+  title: "Pila te ayuda a tomar el control de tus finanzas",
+  description: "Organizá tus ingresos y gastos desde un solo lugar. Monitoreá tus finanzas sin estrés.",
+};
+
+const featureSection = {
+  eyebrow: "Beneficios clave",
+  title: "Una nueva forma de vivir tus finanzas personales",
+  description:
+    "Pila centraliza tus ingresos y gastos, muestra cuánto consumió cada categoría y te ayuda a mantener el control de tus finanzas personales sin fórmulas complicadas.",
+};
+
+const stepsSection = {
+  eyebrow: "Proceso guiado",
+  title: "Listo en menos de un café",
+};
+
+const currentYear = new Date().getFullYear();
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Pila | Tu nueva web app de finanzas personales"
+  description="Organiza tus ingresos, gastos y categorías desde un solo tablero. Pila te ayuda a monitorear tus finanzas sin estrés."
+>
+  <TopBar />
+
+  <main class="landing">
+    <Hero
+      eyebrow={heroContent.eyebrow}
+      title={heroContent.title}
+      description={heroContent.description}
+      ctaApple={ctaApple}
+      ctaAndroid={ctaAndroid}
+      capture={capture}
+    />
+
+    <StatsSection items={stats} />
+
+    <FeaturesSection
+      eyebrow={featureSection.eyebrow}
+      title={featureSection.title}
+      description={featureSection.description}
+      items={features}
+    />
+
+    <StepsSection eyebrow={stepsSection.eyebrow} title={stepsSection.title} items={steps} />
+  </main>
+
+  <FooterSection year={currentYear} />
 </Layout>
+
+<style>
+  .landing {
+    padding: 3rem clamp(2rem, 6vw, 8rem) 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .landing::before {
+    content: "";
+    position: absolute;
+    inset: 2rem 10%;
+    background: radial-gradient(circle at top right, rgba(110, 87, 232, 0.25), transparent 55%);
+    z-index: -1;
+  }
+
+  @media (max-width: 900px) {
+    .landing {
+      padding: 2.5rem clamp(1.5rem, 5vw, 3rem) 4rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .landing {
+      padding-top: 3rem;
+    }
+  }
+</style>
