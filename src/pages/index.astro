@@ -111,9 +111,11 @@ const currentYear = new Date().getFullYear();
     flex-direction: column;
     gap: clamp(3rem, 5vw, 4.5rem);
     position: relative;
-    width: min(1200px, 100%);
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   .landing::before {
@@ -144,6 +146,29 @@ const currentYear = new Date().getFullYear();
     .landing::before {
       inset: 0.5rem 10%;
       opacity: 0.7;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .landing {
+      padding: 1.5rem 1rem 2.5rem;
+      gap: 2rem;
+    }
+
+    .landing::before {
+      inset: 0.25rem 8%;
+      opacity: 0.6;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .landing {
+      padding: 1.25rem 0.875rem 2rem;
+      gap: 1.75rem;
+    }
+
+    .landing::before {
+      opacity: 0.5;
     }
   }
 </style>

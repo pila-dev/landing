@@ -5,7 +5,7 @@ import logo from '../assets/logo_pila_blanco.png';
 <header class="top-bar">
   <div class="top-bar__inner">
     <div class="top-bar__logo">
-      <img src={logo.src} alt="Logo Pila" loading="lazy" />
+      <img src={logo.src} alt="Logo Pila" loading="eager" decoding="async" fetchpriority="high" />
     </div>
   </div>
 </header>
@@ -19,29 +19,60 @@ import logo from '../assets/logo_pila_blanco.png';
     top: 0;
     z-index: 10;
     box-shadow: 0 20px 45px rgba(29, 17, 86, 0.25);
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .top-bar__inner {
-    width: min(1100px, 100%);
+    width: 100%;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 clamp(1.25rem, 5vw, 3.5rem);
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
   }
 
   .top-bar__logo img {
-    height: 32px;
+    height: clamp(28px, 5vw, 32px);
     display: block;
+    width: auto;
   }
 
   @media (max-width: 640px) {
     .top-bar {
       position: static;
+      padding: 0.75rem 0;
     }
 
     .top-bar__inner {
       padding: 0 1rem;
+    }
+
+    .top-bar__logo img {
+      height: 28px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .top-bar {
+      padding: 0.625rem 0;
+    }
+
+    .top-bar__logo img {
+      height: 26px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .top-bar__inner {
+      padding: 0 0.75rem;
+    }
+
+    .top-bar__logo img {
+      height: 24px;
     }
   }
 </style>

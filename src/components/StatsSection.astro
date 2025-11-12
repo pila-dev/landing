@@ -19,13 +19,14 @@ const { items = [] } = Astro.props as { items: StatItem[] };
 <style>
   .stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
     gap: clamp(1rem, 3vw, 1.5rem);
     background: var(--surface);
     border-radius: 1.3rem;
     padding: clamp(1.5rem, 4vw, 2.25rem);
     box-shadow: 0 8px 30px rgba(15, 15, 21, 0.05);
     width: 100%;
+    max-width: 100%;
   }
 
   .stats article {
@@ -48,10 +49,39 @@ const { items = [] } = Astro.props as { items: StatItem[] };
       grid-template-columns: minmax(0, 1fr);
       text-align: center;
       padding: 1.25rem;
+      gap: 1rem;
     }
 
     .stats strong {
       font-size: 1.75rem;
+    }
+
+    .stats p {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats {
+      padding: 1rem;
+    }
+
+    .stats strong {
+      font-size: 1.5rem;
+    }
+
+    .stats p {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .stats strong {
+      font-size: 1.35rem;
+    }
+
+    .stats p {
+      font-size: 0.8rem;
     }
   }
 </style>

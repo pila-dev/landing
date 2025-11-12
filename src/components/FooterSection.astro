@@ -17,6 +17,8 @@ const { year } = Astro.props as Props;
     color: rgba(255, 255, 255, 0.8);
     padding: clamp(1.25rem, 4vw, 2rem) 1rem;
     text-align: center;
+    width: 100%;
+    box-sizing: border-box;
   }
   .site-footer__brand {
     margin-top: 0.5rem;
@@ -29,12 +31,42 @@ const { year } = Astro.props as Props;
   }
 
   @media (max-width: 640px) {
+    .site-footer {
+      padding: 1.25rem 0.75rem;
+    }
+
     .site-footer__brand {
       font-size: 1.1rem;
+      margin-top: 0.4rem;
     }
 
     .site-footer__meta {
       font-size: 0.8rem;
+      margin-bottom: 0.4rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .site-footer {
+      padding: 1rem 0.5rem;
+    }
+
+    .site-footer__brand {
+      font-size: 1rem;
+    }
+
+    .site-footer__meta {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .site-footer__brand {
+      font-size: 0.95rem;
+    }
+
+    .site-footer__meta {
+      font-size: 0.7rem;
     }
   }
 </style>

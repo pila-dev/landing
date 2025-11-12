@@ -37,17 +37,21 @@ const { eyebrow, title, description, items = [] } = Astro.props as Props;
     display: grid;
     gap: clamp(2rem, 5vw, 3rem);
     width: 100%;
+    max-width: 100%;
   }
 
   .section-heading h2 {
     margin: 0 0 0.5rem;
-    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-size: clamp(1.5rem, 3vw, 2.6rem);
+    line-height: 1.2;
   }
 
   .section-heading p {
     color: var(--muted);
     max-width: 60ch;
     margin: 0;
+    font-size: clamp(0.95rem, 2vw, 1rem);
+    line-height: 1.6;
   }
 
   .eyebrow {
@@ -61,7 +65,7 @@ const { eyebrow, title, description, items = [] } = Astro.props as Props;
 
   .feature-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
     gap: clamp(1.25rem, 4vw, 2rem);
   }
 
@@ -86,11 +90,14 @@ const { eyebrow, title, description, items = [] } = Astro.props as Props;
 
   .feature-grid h3 {
     margin: 0 0 0.4rem;
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
   }
 
   .feature-grid p {
     margin: 0;
     color: var(--muted);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    line-height: 1.5;
   }
 
   @media (max-width: 700px) {
@@ -106,6 +113,7 @@ const { eyebrow, title, description, items = [] } = Astro.props as Props;
   @media (max-width: 640px) {
     .feature-grid {
       grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
     }
 
     .feature-grid article {
@@ -115,6 +123,55 @@ const { eyebrow, title, description, items = [] } = Astro.props as Props;
     .icon {
       width: 2.75rem;
       height: 2.75rem;
+      font-size: 1.4rem;
+    }
+
+    .feature-grid h3 {
+      font-size: 1.05rem;
+    }
+
+    .feature-grid p {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .feature-grid article {
+      padding: 1rem;
+    }
+
+    .icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-grid h3 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .feature-grid p {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .section-heading h2 {
+      font-size: 1.35rem;
+    }
+
+    .section-heading p {
+      font-size: 0.9rem;
+    }
+
+    .feature-grid h3 {
+      font-size: 0.95rem;
+    }
+
+    .feature-grid p {
+      font-size: 0.825rem;
     }
   }
 </style>
