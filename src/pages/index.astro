@@ -9,6 +9,7 @@ import FooterSection from "../components/FooterSection.astro";
 import ctaApple from "../assets/cta_apple.webp";
 import ctaAndroid from "../assets/cta_android.webp";
 import capture from "../assets/capture.png";
+import Analytics from '@vercel/analytics/astro'
 
 const features = [
   {
@@ -103,6 +104,8 @@ const currentYear = new Date().getFullYear();
 
   <FooterSection year={currentYear} />
 </Layout>
+
+<Analytics />
 
 <style>
   .landing {
