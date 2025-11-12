@@ -14,7 +14,7 @@ import logo from '../assets/logo_pila_blanco.png';
   .top-bar {
     background: linear-gradient(120deg, #7f6af0, #5b42d6);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1rem 0;
+    padding: clamp(0.75rem, 2vw, 1rem) 0;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -22,9 +22,9 @@ import logo from '../assets/logo_pila_blanco.png';
   }
 
   .top-bar__inner {
-    width: min(1200px, 100%);
+    width: min(1100px, 100%);
     margin: 0 auto;
-    padding: 0 clamp(2rem, 6vw, 8rem);
+    padding: 0 clamp(1.25rem, 5vw, 3.5rem);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,7 +41,7 @@ import logo from '../assets/logo_pila_blanco.png';
     }
 
     .top-bar__inner {
-      padding: 0 clamp(1.5rem, 8vw, 2.5rem);
+      padding: 0 1rem;
     }
   }
 </style>

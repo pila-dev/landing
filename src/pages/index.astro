@@ -13,33 +13,36 @@ import capture from "../assets/capture.png";
 const features = [
   {
     icon: "💸",
-    title: "Registro de movimientos",
-    copy: "Cargá cada cobro e ingreso y conoce tu dinero disponible al instante.",
-  },
-  {
-    icon: "🧾",
-    title: "Gastos ordenados",
-    copy: "Asigna categorías personalizadas y detecta en segundos qué categorías dominan el gasto.",
+    title: "Controlá tus finanzas",
+    copy: "Registrá tus datos e ingresos de forma rápida y sencilla. Mantené el control de tu dinero en un solo lugar.",
   },
   {
     icon: "📊",
-    title: "Balance al día",
-    copy: "Consulta resúmenes mensuales y anuales para ver la diferencia entre lo que entra y sale.",
+    title: "Visualizá tus gastos",
+    copy: "Conocé en qué gastás más con estadísticas claras. Tomá mejores decisiones financieras basadas en tus datos reales.",
+  },
+  {
+    icon: "🔒",
+    title: "Tus datos seguros",
+    copy: "Exportá e importá tu información cuando quieras. Tus datos están guardados en tu dispositivo.",
   },
 ];
 
 const steps = [
   {
+    icon: "💰",
     title: "Carga tus ingresos",
     copy: "Ingresa sueldos, freelance y cualquier entrada para ver cuánto dinero disponible tienes.",
   },
   {
+    icon: "🧾",
     title: "Registra y clasifica gastos",
     copy: "Anota cada gasto, asígnalo a una categoría y detecta rápidamente dónde se va tu plata.",
   },
   {
+    icon: "📈",
     title: "Controla tu balance",
-    copy: "Consulta resúmenes semanales y mensuales para ajustar hábitos y tomar decisiones claras.",
+    copy: "Consulta tus estadísticas para ajustar hábitos y tomar decisiones claras.",
   },
 ];
 
@@ -50,7 +53,7 @@ const stats = [
 ];
 
 const heroContent = {
-  eyebrow: "Cuidá tu plata sin drama",
+  eyebrow: "Cuidá tu plata",
   title: "Pila te ayuda a tomar el control de tus finanzas",
   description: "Organizá tus ingresos y gastos desde un solo lugar. Monitoreá tus finanzas sin estrés.",
 };
@@ -86,7 +89,7 @@ const currentYear = new Date().getFullYear();
       capture={capture}
     />
 
-    <StatsSection items={stats} />
+    <!-- <StatsSection items={stats} /> -->
 
     <FeaturesSection
       eyebrow={featureSection.eyebrow}
@@ -103,13 +106,12 @@ const currentYear = new Date().getFullYear();
 
 <style>
   .landing {
-    padding: 3rem clamp(2rem, 6vw, 8rem) 5rem;
+    padding: clamp(2.5rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4rem) clamp(3rem, 7vw, 5rem);
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: clamp(3rem, 5vw, 4.5rem);
     position: relative;
-    width: 100%;
-    max-width: 1200px;
+    width: min(1200px, 100%);
     margin: 0 auto;
     box-sizing: border-box;
   }
@@ -117,20 +119,31 @@ const currentYear = new Date().getFullYear();
   .landing::before {
     content: "";
     position: absolute;
-    inset: 2rem 10%;
+    inset: 1.5rem 8%;
     background: radial-gradient(circle at top right, rgba(110, 87, 232, 0.25), transparent 55%);
     z-index: -1;
   }
 
   @media (max-width: 900px) {
     .landing {
-      padding: 2.5rem clamp(1.5rem, 5vw, 3rem) 4rem;
+      padding: clamp(2rem, 6vw, 3rem) clamp(1.25rem, 4vw, 2.75rem) clamp(3rem, 7vw, 4rem);
+      gap: 3rem;
+    }
+
+    .landing::before {
+      inset: 1rem 5%;
     }
   }
 
   @media (max-width: 640px) {
     .landing {
-      padding-top: 3rem;
+      padding: 2rem 1.25rem 3rem;
+      gap: 2.5rem;
+    }
+
+    .landing::before {
+      inset: 0.5rem 10%;
+      opacity: 0.7;
     }
   }
 </style>
