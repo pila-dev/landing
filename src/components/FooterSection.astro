@@ -1,4 +1,5 @@
 ---
+import logo from "../assets/logo_pila_blanco.png";
 interface Props {
   year: number;
 }
@@ -7,66 +8,73 @@ const { year } = Astro.props as Props;
 ---
 
 <footer class="site-footer">
-  <p class="site-footer__brand">by PilaDev</p>
-  <p class="site-footer__meta">© {year} PilaDev. Todos los derechos reservados.</p>
+  <div class="site-footer__inner">
+    <div>
+      <img src={logo.src} alt="Logo Pila" class="site-footer__logo" />
+      <p class="site-footer__copy">© {year} Pila. Todos los derechos reservados.</p>
+    </div>
+    <p class="site-footer__meta">
+      <!-- © {year} Pila. Todos los derechos reservados. -->
+    </p>
+    <div class="site-footer__links">
+      <a href="/terminos">Términos y Condiciones</a>
+      <a href="mailto:hola@pila.app">Contáctanos: hola@pila.app</a>
+    </div>
+  </div>
 </footer>
 
 <style>
   .site-footer {
     background: #0b0b12;
     color: rgba(255, 255, 255, 0.8);
-    padding: clamp(1.25rem, 4vw, 2rem) 1rem;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 2.5rem clamp(2rem, 6vw, 8rem);
+    margin-top: 2rem;
   }
+
+  .site-footer__logo {
+    height: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .site-footer__inner {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-items: end;
+  }
+
   .site-footer__brand {
-    margin-top: 0.5rem;
-    font-size: 1.25rem;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem;
+    color: #fff;
   }
+
+  .site-footer__copy {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .site-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .site-footer__links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .site-footer__links a:hover {
+    color: #fff;
+  }
+
   .site-footer__meta {
-    margin-bottom: 0.5rem;
-    font-size: 0.875rem;
-  }
-
-  @media (max-width: 640px) {
-    .site-footer {
-      padding: 1.25rem 0.75rem;
-    }
-
-    .site-footer__brand {
-      font-size: 1.1rem;
-      margin-top: 0.4rem;
-    }
-
-    .site-footer__meta {
-      font-size: 0.8rem;
-      margin-bottom: 0.4rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .site-footer {
-      padding: 1rem 0.5rem;
-    }
-
-    .site-footer__brand {
-      font-size: 1rem;
-    }
-
-    .site-footer__meta {
-      font-size: 0.75rem;
-    }
-  }
-
-  @media (max-width: 360px) {
-    .site-footer__brand {
-      font-size: 0.95rem;
-    }
-
-    .site-footer__meta {
-      font-size: 0.7rem;
-    }
+    margin: 0;
+    font-size: 0.9rem;
   }
 </style>

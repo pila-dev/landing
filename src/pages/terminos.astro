@@ -1,0 +1,162 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TopBar from "../components/TopBar.astro";
+import FooterSection from "../components/FooterSection.astro";
+
+const currentYear = new Date().getFullYear();
+
+const sections = [
+  {
+    title: "1. Aceptación",
+    body:
+      "Al descargar, instalar o utilizar Pila aceptás íntegramente estos Términos y Condiciones. Si no estás de acuerdo con alguno de los puntos detallados, te pedimos que no utilices la aplicación.",
+  },
+  {
+    title: "2. Uso permitido",
+    body:
+      "Pila se ofrece para uso personal y no comercial. No podés utilizarla para actividades ilícitas, automatizar el acceso sin autorización ni intentar vulnerar sus medidas de seguridad.",
+  },
+  {
+    title: "3. Registro de datos",
+    body:
+      "La información cargada se almacena en tu dispositivo. Sos responsable de realizar copias de seguridad y de mantener tus credenciales protegidas frente a terceros.",
+  },
+  {
+    title: "4. Propiedad intelectual",
+    body:
+      "Todos los derechos sobre el software, diseños, textos, marcas y demás elementos de Pila pertenecen a PilaDev y/o a sus licenciantes. No se otorga ninguna licencia más allá de la necesaria para usar la app.",
+  },
+  {
+    title: "5. Limitación de responsabilidad",
+    body:
+      "La aplicación se brinda “tal cual”, sin garantías expresas o implícitas. PilaDev no responde por pérdidas derivadas de decisiones financieras tomadas en base a la app ni por daños ocasionados por factores externos.",
+  },
+  {
+    title: "6. Privacidad",
+    body:
+      "Tratamos tus datos conforme a nuestra Política de Privacidad. Al usar la app confirmás que leíste y aceptaste ese documento.",
+  },
+  {
+    title: "7. Cambios y actualizaciones",
+    body:
+      "Podemos modificar estos términos cuando sea necesario. Publicaremos la versión vigente en este sitio y la fecha de última actualización. Continuar usando Pila implica aceptar las modificaciones.",
+  },
+  {
+    title: "8. Contacto",
+    body:
+      "Si tenés consultas sobre estos términos, escribinos a hola@pila.ar. El equipo revisará tu mensaje a la brevedad.",
+  },
+];
+---
+
+<Layout title="Términos y Condiciones | Pila" description="Condiciones de uso y responsabilidades de la app Pila.">
+  <TopBar />
+
+  <main class="terms">
+    <section class="terms__hero">
+      <p class="terms__eyebrow">Información legal</p>
+      <h1>Términos y Condiciones</h1>
+      <p class="terms__intro">
+        Gracias por usar Pila. Este documento explica las reglas básicas para utilizar la app, las
+        responsabilidades de cada parte y cómo manejamos tus datos. Te sugerimos leerlo con
+        atención.
+      </p>
+      <p class="terms__updated">Última actualización: {currentYear}</p>
+    </section>
+
+    <section class="terms__content">
+      {
+        sections.map((section) => (
+          <article class="terms-card">
+            <h2>{section.title}</h2>
+            <p>{section.body}</p>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+
+  <FooterSection year={currentYear} />
+</Layout>
+
+<style>
+  .terms {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3rem) clamp(3rem, 8vw, 4.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .terms__hero {
+    background: var(--surface);
+    border-radius: 24px;
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    box-shadow: 0 20px 45px rgba(66, 50, 140, 0.15);
+  }
+
+  .terms__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    margin: 0 0 0.75rem;
+    color: var(--muted);
+  }
+
+  .terms__hero h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 5vw, 2.65rem);
+    color: var(--text);
+  }
+
+  .terms__intro {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(15, 15, 21, 0.85);
+  }
+
+  .terms__updated {
+    margin: 1.25rem 0 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .terms__content {
+    gap: 1.5rem;
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 1px solid rgba(110, 87, 232, 0.1);
+    box-shadow: 0 15px 35px rgba(29, 17, 86, 0.1);
+  }
+
+  .terms-card {
+    padding: 1rem;
+  }
+
+  .terms-card h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+    color: var(--brand-dark);
+  }
+
+  .terms-card p {
+    margin: 0;
+    color: rgba(15, 15, 21, 0.85);
+    line-height: 1.55;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 640px) {
+    .terms {
+      padding: 2rem 1.25rem 3rem;
+    }
+
+    .terms__content {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
